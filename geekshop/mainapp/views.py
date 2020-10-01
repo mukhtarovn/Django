@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from mainapp.models import ProductCategory
 
 # Create your views here.
 links_menu = [
@@ -15,7 +16,9 @@ def main(request):
     }
     return render(request, 'mainapp/index.html', content)
 
-def products (request):
+def products (request, pk=None):
+    print(pk)
+    links_menu = ProductCategory.objects.all()
     content = {
         'links_menu': links_menu,
         'title': 'продукты',
